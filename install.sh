@@ -29,36 +29,26 @@ case $choice in
         read URL
         sleep 1
         echo ${G}"Hãy đặt tên cho Distro của bạn! Ví dụ: Bạn nhập là 'alpine' thì khi đăng nhập vào Distro, bạn sẽ gõ: 'bash alpine-x64.sh' "
-        while true; do
-            read -p "==> Bạn sẽ đặt tên Distro là: " ds_name
-            if [[ -n "$ds_name" ]]; then
-                break
-            else
-                echo ${R}"Lỗi: Tên Distro không được để trống, vui lòng nhập lại!"
-            fi
-        done
+        read ds_name
         sleep 1
 
         folder=$ds_name-x64-fs
         if [ -d "$folder" ]; then
-            echo ${G}"Đã phát hiện Distro đã cài đặt trước đó, bạn có muốn gỡ bỏ? (y hoặc n)"
-            while true; do
-                read -p "==> Lựa chọn của bạn: " ans
-                if [[ "$ans" =~ ^([yY])$ ]]; then
-                    echo ${W}"Đang gỡ cài đặt Distro cũ..."
-                    rm -rf ~/$folder
-                    rm -rf ~/$ds_name-x64.sh
-                    sleep 2
-                    break
-                elif [[ "$ans" =~ ^([nN])$ ]]; then
-                    echo ${R}"Vì file Distro cũ có cùng tên với Distro bạn muốn cài nên không thể tiếp tục, hủy bỏ thực thi lệnh!"
-                    exit
-                else
-                    echo ${R}"Lỗi: Lựa chọn không hợp lệ, vui lòng nhập y hoặc n!"
-                fi
-            done
+        echo ${G}"Đã phát hiện Distro đã cài đặt trước đó, bạn có muốn gỡ bỏ? (y hoặc n)"${W}
+        read ans
+            if [[ "$ans" =~ ^([yY])$ ]]; then
+                echo ${W}"Đang gỡ cài đặt Distro cũ..."${W}
+                rm -rf ~/$folder
+                rm -rf ~/$ds_name-x64.sh
+                sleep 2
+            elif [[ "$ans" =~ ^([nN])$ ]]; then
+            echo ${R}"Vì file Distro cũ có cùng tên với Distro bạn muốn cài nên không thể tiếp tục, hủy bỏ thực thi lệnh!"
+            exit
+            else 
+            echo
+            fi
         else 
-            mkdir -p $folder
+        mkdir -p $folder
         fi
 
         clear
