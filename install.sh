@@ -21,7 +21,14 @@ clear
 echo ${C}"=== Đã xong những thiết đặt cơ bản, hãy lựa chọn: "
 echo "1. Cài đặt Distro theo đường dẫn URL bên ngoài (mượt hơn nhưng không ổn định, có thể sẽ bị Crash)"
 echo "2. Cài đặt Distro theo gói proot-distro của Termux (ổn định hơn nhưng tốc độ phản hồi chậm hơn)"
-read -p "Lựa chọn của bạn là (1 hoặc 2): " choice
+while true; do
+    read -p "Lựa chọn của bạn là (1 hoặc 2): " choice
+    if [[ "$choice" == "1" || "$choice" == "2" ]]; then
+        break
+    else
+        echo "${R}Lỗi: Lựa chọn của bạn không hợp lệ, hãy lựa chọn 1 hoặc 2 để tiếp tục!"
+    fi
+done
 
 case $choice in
     1)
@@ -47,7 +54,7 @@ case $choice in
                 echo ${R}"Vì file Distro cũ có cùng tên với Distro bạn muốn cài nên không thể tiếp tục, hủy bỏ thực thi lệnh!"
                 exit
                 else 
-                echo
+                echo "Không thể tiếp tục. Hủy bỏ thực thi câu lệnh này!"
                 fi
         else 
         mkdir -p $folder
