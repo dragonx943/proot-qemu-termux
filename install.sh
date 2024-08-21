@@ -34,13 +34,13 @@ case $choice in
 
         folder=$ds_name-x64-fs
         if [ -d "$folder" ]; then
-        echo ${G}"Đã phát hiện Distro đã cài đặt trước đó, bạn có muốn gỡ bỏ? (y hoặc n)"${W}
-        read ans
+            echo ${G}"Đã phát hiện Distro đã cài đặt trước đó, bạn có muốn gỡ bỏ? (y hoặc n)"${W}
+            read ans
             if [[ "$ans" =~ ^([yY])$ ]]; then
-                echo ${W}"Đang gỡ cài đặt Distro cũ..."${W}
-                rm -rf ~/$folder
-                rm -rf ~/$ds_name-x64.sh
-                sleep 2
+                    echo ${W}"Đang gỡ cài đặt Distro cũ..."${W}
+                    rm -rf ~/$folder
+                    rm -rf ~/$ds_name-x64.sh
+                    sleep 2
             elif [[ "$ans" =~ ^([nN])$ ]]; then
             echo ${R}"Vì file Distro cũ có cùng tên với Distro bạn muốn cài nên không thể tiếp tục, hủy bỏ thực thi lệnh!"
             exit
