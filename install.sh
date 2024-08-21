@@ -21,6 +21,7 @@ clear
 echo ${C}"=== Đã xong những thiết đặt cơ bản, hãy lựa chọn: "
 echo "1. Cài đặt Distro theo đường dẫn URL bên ngoài (mượt hơn nhưng không ổn định, có thể sẽ bị Crash)"
 echo "2. Cài đặt Distro theo gói proot-distro của Termux (ổn định hơn nhưng tốc độ phản hồi chậm hơn)"
+echo "Lựa chọn của bạn: "
 read choice
 
 case $choice in
