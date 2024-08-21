@@ -34,30 +34,46 @@ case $choice in
     1)
         echo ${C}"=== Bạn đã chọn cài đặt Distro theo đường dẫn URL bên ngoài! ==="
         echo ${G}"Tiếp theo, hãy cung cấp một URL hợp lệ để tải về Distro của bạn (là file .tar.gz hoặc .tar.xz)"${W}
-        sleep 3
-        read -p "==> URL của bạn là: " URL
+        while true; do
+            read -p "==> URL của bạn là: " URL
+            if [[ "$URL" =~ ^https?:// ]]; then
+                break
+            else
+                echo "${R}Lỗi: Vui lòng nhập một URL hợp lệ bắt đầu bằng http hoặc https!"
+            fi
+        done
         sleep 1
         echo ${G}"Hãy đặt tên cho Distro của bạn! Ví dụ: Bạn nhập là 'alpine' thì khi đăng nhập vào Distro, bạn sẽ gõ: 'bash alpine-x64.sh' "${W}
-        read -p "==> Bạn sẽ đặt tên Distro là: " ds_name
+        while true; do
+            read -p "==> Bạn sẽ đặt tên Distro là: " ds_name
+            if [[ -n "$ds_name" ]]; then
+                break
+            else
+                echo "${R}Lỗi: Tên Distro không được để trống, vui lòng nhập lại!"
+            fi
+        done
         sleep 1
 
         folder=$ds_name-x64-fs
         if [ -d "$folder" ]; then
-                echo ${G}"Đã phát hiện Distro đã cài đặt trước đó, bạn có muốn gỡ bỏ? (y hoặc n)"${W}
-                read ans
+            echo ${G}"Đã phát hiện Distro đã cài đặt trước đó, bạn có muốn gỡ bỏ? (y hoặc n)"${W}
+            while true; do
+                read -p "==> Lựa chọn của bạn: " ans
                 if [[ "$ans" =~ ^([yY])$ ]]; then
-                        echo ${W}"Đang gỡ cài đặt Distro cũ..."${W}
-                        rm -rf ~/$folder
-                        rm -rf ~/$ds_name-x64.sh
-                        sleep 2
+                    echo ${W}"Đang gỡ cài đặt Distro cũ..."${W}
+                    rm -rf ~/$folder
+                    rm -rf ~/$ds_name-x64.sh
+                    sleep 2
+                    break
                 elif [[ "$ans" =~ ^([nN])$ ]]; then
-                echo ${R}"Vì file Distro cũ có cùng tên với Distro bạn muốn cài nên không thể tiếp tục, hủy bỏ thực thi lệnh!"
-                exit
-                else 
-                echo "Không thể tiếp tục. Hủy bỏ thực thi câu lệnh này!"
+                    echo ${R}"Vì file Distro cũ có cùng tên với Distro bạn muốn cài nên không thể tiếp tục, hủy bỏ thực thi lệnh!"
+                    exit
+                else
+                    echo "${R}Lỗi: Lựa chọn không hợp lệ, vui lòng nhập y hoặc n!"
                 fi
+            done
         else 
-        mkdir -p $folder
+            mkdir -p $folder
         fi
 
         clear
@@ -129,5 +145,8 @@ EOM
         echo "DISTRO_ARCH=x86_64" >> $PREFIX/etc/proot-distro/$DISTRO
         proot-distro install $DISTRO_INSTALL
         echo ${G}"Đã xong. Hãy đăng nhập Distro với câu lệnh: 'proot-distro login $DISTRO_INSTALL' (thêm --shared-tmp nếu muốn sử dụng với Termux:X11)"${W}
+        ;;
+    *)
+        echo ${R}"Lỗi: Lựa chọn của bạn không hợp lệ, hãy lựa chọn 1 hoặc 2 để tiếp tục!"
         ;;
 esac
