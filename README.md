@@ -3,7 +3,7 @@
 ### Câu lệnh:
 
 ```bash 
-curl -o- https://raw.githubusercontent.com/dragonx943/proot-qemu-termux/master/install.sh | bash
+curl -o- https://raw.githubusercontent.com/dragonx943/proot-qemu-termux/main/install.sh | bash
 ```
 
 ### Đóng góp / trợ giúp để viết Script này:
