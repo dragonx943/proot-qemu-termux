@@ -14,9 +14,6 @@ clear
 echo ${G}"==> Tiến trình: Cài đặt những gói cần thiết..."${W}
 pkg install proot wget qemu-user-x86_64 proot-distro -y
 clear
-echo ${G}"==> Tiến trình: Cấp quyền truy cập bộ nhớ cho Termux (liên kết tại /sdcard)..."${W}
-termux-setup-storage
-clear
 
 echo ${C}"=== Đã xong những thiết đặt cơ bản, hãy lựa chọn: "
 echo "1. Cài đặt Distro theo đường dẫn URL bên ngoài (mượt hơn nhưng không ổn định, có thể sẽ bị Crash)"
