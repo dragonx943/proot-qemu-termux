@@ -123,7 +123,4 @@ EOM
         proot-distro install $DISTRO_INSTALL
         echo ${G}"Đã xong. Hãy đăng nhập Distro với câu lệnh: 'proot-distro login $DISTRO_INSTALL' (thêm --shared-tmp nếu muốn sử dụng với Termux:X11)"${W}
         ;;
-    *)
-        echo ${R}"Lỗi: Lựa chọn của bạn không hợp lệ, hãy lựa chọn 1 hoặc 2 để tiếp tục!"
-        ;;
 esac
