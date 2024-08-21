@@ -25,14 +25,8 @@ case $choice in
     1)
         echo ${C}"=== Bạn đã chọn cài đặt Distro theo đường dẫn URL bên ngoài! ==="
         echo ${G}"Tiếp theo, hãy cung cấp một URL hợp lệ để tải về Distro của bạn (là file .tar.gz hoặc .tar.xz)"
-        while true; do
-            read -p "==> URL của bạn là: " URL
-            if [[ "$URL" =~ ^https?:// ]]; then
-                break
-            else
-                echo ${R}"Lỗi: Vui lòng nhập một URL hợp lệ bắt đầu bằng http hoặc https!"
-            fi
-        done
+        echo "==> URL của bạn là: "
+        read URL
         sleep 1
         echo ${G}"Hãy đặt tên cho Distro của bạn! Ví dụ: Bạn nhập là 'alpine' thì khi đăng nhập vào Distro, bạn sẽ gõ: 'bash alpine-x64.sh' "
         while true; do
