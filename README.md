@@ -1,4 +1,4 @@
-## Chạy Linux Distro với nhân x86_64 / amd64 trên Termux với giả lập QEMU và Proot!
+## Chạy Linux cấu trúc x86_64 / amd64 trên Termux với giả lập QEMU + Proot!
 
 ### Câu lệnh:
 
