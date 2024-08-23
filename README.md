@@ -1,9 +1,9 @@
-## Chạy Linux cấu trúc x86_64 / amd64 trên Termux với giả lập QEMU + Proot!
+## Chạy Linux cấu trúc x86_64 / amd64 trên Termux với giả lập QEMU / Blink + Proot!
 
 ### Câu lệnh:
 
 ```bash 
-curl -O https://raw.githubusercontent.com/dragonx943/proot-qemu-termux/main/install.sh && chmod a+x install.sh && bash install.sh
+curl -O https://raw.githubusercontent.com/dragonx943/proot-x86_64-termux/main/install.sh && chmod a+x install.sh && bash install.sh
 ```
 
 ### Đóng góp / trợ giúp để viết Script này:
