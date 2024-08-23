@@ -143,6 +143,7 @@ case $choice in
         command+=" -0"
         command+=" -r $folder -q $RUNTIME_NAME"
         command+=" -b /dev"
+	command+=" -b /dev/null:/proc/sys/kernel/cap_last_cap"
         command+=" -b /proc"
 	command+=" -b /sys"
  	command+=" -b /proc/self/fd:/dev/fd"
@@ -160,7 +161,9 @@ case $choice in
         command+=" HOME=/root"
         command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/games:/usr/local/games"
         command+=" TERM=\$TERM"
-        command+=" LANG=C.UTF-8"
+        command+=" LANG=en_US.UTF-8"
+	command+=" LC_ALL=C"
+ 	command+=" LANGUAGE=en_US"
         command+=" /bin/su -l"
         com="\$@"
         if [ -z "\$1" ]; then
