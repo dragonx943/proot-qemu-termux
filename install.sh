@@ -139,10 +139,16 @@ case $choice in
         unset LD_PRELOAD
         command="proot"
         command+=" --link2symlink"
+	command+=" --kill-on-exit"
         command+=" -0"
         command+=" -r $folder -q $RUNTIME_NAME"
         command+=" -b /dev"
         command+=" -b /proc"
+	command+=" -b /sys"
+ 	command+=" -b /proc/self/fd:/dev/fd"
+	command+=" -b /proc/self/fd/0:/dev/stdin"
+	command+=" -b /proc/self/fd/1:/dev/stdout"
+	command+=" -b /proc/self/fd/2:/dev/stderr"
         command+=" -b $folder/root:/dev/shm"
         command+=" -b /data/data/com.termux/files/usr/tmp:/tmp"
         ## Xóa # liên kết /root với HOME của Termux
@@ -155,7 +161,7 @@ case $choice in
         command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/games:/usr/local/games"
         command+=" TERM=\$TERM"
         command+=" LANG=C.UTF-8"
-        command+=" /bin/sh --login"
+        command+=" /bin/su -l"
         com="\$@"
         if [ -z "\$1" ]; then
             exec \$command
