@@ -57,6 +57,7 @@ case $RUNTIME in
         esac
         sleep 1
         clear
+	;;
     2)
         RUNTIME_NAME="qemu-x86_64"
         echo ${C}"Bạn đã chọn Runtime là: qemu-user-x86-64!"
@@ -66,6 +67,7 @@ case $RUNTIME in
         echo ${G}"W: Đã cài đặt Runtime xong!"${W}
         sleep 1
         clear
+	;;
     3)
         RUNTIME_NAME="blink"
         echo ${C}"Bạn đã chọn Runtime là: Blink!"
@@ -75,6 +77,7 @@ case $RUNTIME in
         echo ${G}"W: Đã cài đặt Runtime xong!"${W}
         sleep 1
         clear
+	;;
 esac
 
 echo ${C}"=== Đã xong những thiết đặt cơ bản, hãy lựa chọn: "
